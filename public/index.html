@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>RSA Algorithm!</title>
+</head>
+
+<body>
+<!-- Image and text -->
+<nav class="navbar nav-bar">
+  <a class="navbar-brand" href="#">
+    <img src="./img/cryptography1.png" width="35" height="35" class="d-inline-block align-top " alt="">
+    RSA algorithm
+  </a>
+</nav>
+
+<div class="container containerM">
+
+  <!-- Generated keys -->
+  <div class="row filita">
+  <div class="col">
+      <button type="button" class="centrado btn btn-outline-primary btn-lg btn-block " onclick="generate();">Generate Key</button>
+  </div>
+  
+  </div>
+  
+  <div class="row">
+
+    <!-- Text Area Public Key Generate -->
+    <div class="col-sm">
+      <form id="form-keys" method="POST" action="/index">
+        <div class="form-group ">
+          <div class="texto">
+            <label for="PublicKey">Public Key Generated</label>
+          </div>
+
+           <textarea class="form-control texto" id="PublicKey" rows="5" wrap readonly=""></textarea>
+        
+        <div class="ancla">
+            <a href="#" id="downloadPublicKey"  download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
+            <span>Download public key</span></a>
+           
+         </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Text Area Private Key Generate -->
+    <div class="col-sm">
+      <div class="texto">
+        <label for="PrivateKey">Private Key Generated</label>
+      </div>
+      <textarea class="form-control texto" id="PrivateKey" rows="5" readonly=""></textarea>
+      <div class= "ancla">
+        <a href="#" id="downloadPrivateKey" download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
+        <span>Download private key</span></a>
+      </div>
+    </div>
+
+    <!-- Text Area Public Key Enter -->
+  </div>
+
+  <!-- Encrypt Area -->
+  <div class="row fila-fea">
+    <div class="col-sm">
+      <div class="texto">
+        <label for="publicKeyEnter">Enter public key to encrypt</label>
+      </div>
+      <textarea class="form-control texto" id="PublicKeyEnter" rows="5"></textarea>
+      
+      <div class="contenedor">
+          <button type="button" class="centrado btn btn-color" onclick="encrypt();">Encrypt</button>
+      </div>
+    </div>
+    <!-- Text Area Insert Text -->
+    <div class="col-sm">
+      <form id="form" method="POST" action="./index.html" accept-charset="utf-8">
+        <div class="form-group">
+          <div class="texto">
+            <label for="textEncrypt">Insert text to Encrypt</label>
+          </div>
+          <textarea class="form-control texto" id="textEncrypt" rows="5" wrap></textarea>
+          <input type="file" id="file" name="file" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Text Area Encrypted Text -->
+    <div class="col-sm">
+      <div class="texto">
+        <label for="textCrypted">Result</label>
+      </div>
+      <textarea class="form-control texto" id="textCrypted" rows="5" readonly></textarea>
+      <div class= "ancla">
+        <a href="#" id="downloadEncryptedFile" download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
+        <span>Download file</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message Let's Decrypt -->
+  <div class="alert  alerta" role="alert">
+    <h4> Let´s Decrypt!</h4>
+  </div>
+
+  <!-- Decrypt Area -->
+  <div class="row">
+
+
+    <div class="col-sm">
+      <div class="texto">
+        <label for="privateKeyEnter">Insert Private Key to Decrypt</label>
+      </div>
+      <textarea class="form-control texto" id="privateKeyEnter" rows="5" ></textarea>
+      <div class="contenedor">
+          <button type="button" class="centrado btn btn-color-amarillo" onclick="decrypt();">Decrypt</button>
+        </div>
+    </div>
+
+    <!-- Text Area Insert Text -->
+    <div class="col-sm">
+      <form>
+        <div class="form-group ">
+          <div class="texto">
+            <label for="textDecryp">Insert text to Decrypt</label>
+          </div>
+          <textarea class="form-control texto" id="textDecryp" rows="5" wrap></textarea>
+          <input type="file" id="fileDecrypt" name="file" />
+        </div>
+        
+      </form>
+    </div>
+
+
+
+  <div class="col-sm">
+      <div class="texto">
+        <label for="textDecrypted">Result</label>
+      </div>
+      <textarea class="form-control texto" id="textDecrypted" rows="5" readonly></textarea>
+    <div class= "ancla">
+        <a href="#" id="downloadDecryptedFile" download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
+        <span>Download file</span></a>
+      </div>
+    
+    </div>
+    
+
+    
+  </div>
+
+    <!-- Text Area Decrypted Text -->
+    
+  </div>
+<!--Hola-->
+</div>
+
+<footer class="footer footer-mine">
+  <div class="container">
+    <img src="./img/cryptography1.png" alt="Escom logo " width="50" height="50">
+    <span class="span-datos">Regis Valero Jorge Jesus</span>
+    <span class="span-datos">Medina Martinez Miguel Angel</span>
+    <span class="span-datos">Group: 3CM13</span>
+  </div>
+</footer>
+
+
+<script type="text/javascript" src="js/encrypt.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
