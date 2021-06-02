@@ -1,6 +1,6 @@
 const express = require('express')
 
-let usuarios = require('../routes/usuarios')
+let usuarios = require('../routes/usuarios');
 let pruebas = require('../routes/pruebas');
 let cors = require('cors');
 let bodyParser = require('body-parser');
@@ -46,7 +46,7 @@ class Server{
 
     //otro tipo de middl configuramos el router
     this.app.use(this.usuariosPath, usuarios);
-    this.app.use(this.pruebasPath , pruebas  )
+    this.app.use(this.pruebasPath , pruebas);
 
   }
 
