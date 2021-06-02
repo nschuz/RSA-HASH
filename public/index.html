@@ -28,9 +28,9 @@
   <div class="col">
       <button type="button" class="centrado btn btn-outline-primary btn-lg btn-block " onclick="generate();">Generate Key</button>
   </div>
-  
+
   </div>
-  
+
   <div class="row">
 
     <!-- Text Area Public Key Generate -->
@@ -42,11 +42,10 @@
           </div>
 
            <textarea class="form-control texto" id="PublicKey" rows="5" wrap readonly=""></textarea>
-        
+
         <div class="ancla">
             <a href="#" id="downloadPublicKey"  download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
             <span>Download public key</span></a>
-           
          </div>
         </div>
       </form>
@@ -71,12 +70,12 @@
   <div class="row fila-fea">
     <div class="col-sm">
       <div class="texto">
-        <label for="publicKeyEnter">Enter public key to encrypt</label>
+        <label for="insertPrivate">Insert private key</label>
       </div>
-      <textarea class="form-control texto" id="PublicKeyEnter" rows="5"></textarea>
-      
+      <textarea class="form-control texto" id="insertPrivate" placeholder="Insert private key" rows="5"></textarea>
+      <input type="file" id="file3" name="file3" />
       <div class="contenedor">
-          <button type="button" class="centrado btn btn-color" onclick="encrypt();">Encrypt</button>
+
       </div>
     </div>
     <!-- Text Area Insert Text -->
@@ -84,9 +83,9 @@
       <form id="form" method="POST" action="./index.html" accept-charset="utf-8">
         <div class="form-group">
           <div class="texto">
-            <label for="textEncrypt">Insert text to Encrypt</label>
+            <label for="textEncrypt">Insert the text to digitally sign it</label>
           </div>
-          <textarea class="form-control texto" id="textEncrypt" rows="5" wrap></textarea>
+          <textarea class="form-control texto" id="textEncrypt" placeholder="Insert the text to digitally sign it" rows="5" wrap></textarea>
           <input type="file" id="file" name="file" />
         </div>
       </form>
@@ -99,6 +98,7 @@
       </div>
       <textarea class="form-control texto" id="textCrypted" rows="5" readonly></textarea>
       <div class= "ancla">
+        <button type="button" class="centrado btn btn-color-amarillo" onclick="signIt();">Sign It</button>
         <a href="#" id="downloadEncryptedFile" download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
         <span>Download file</span></a>
       </div>
@@ -107,7 +107,7 @@
 
   <!-- Message Let's Decrypt -->
   <div class="alert  alerta" role="alert">
-    <h4> Let´s Decrypt!</h4>
+    <h4> Verify document!</h4>
   </div>
 
   <!-- Decrypt Area -->
@@ -116,11 +116,11 @@
 
     <div class="col-sm">
       <div class="texto">
-        <label for="privateKeyEnter">Insert Private Key to Decrypt</label>
+        <label for="privateKeyEnter">Insert public key to verify</label>
       </div>
-      <textarea class="form-control texto" id="privateKeyEnter" rows="5" ></textarea>
+      <textarea class="form-control texto" id="privateKeyEnter"  placeholder="Insert public key to verify" rows="5" ></textarea>
       <div class="contenedor">
-          <button type="button" class="centrado btn btn-color-amarillo" onclick="decrypt();">Decrypt</button>
+        <input type="file" id="file4" name="file4" />
         </div>
     </div>
 
@@ -129,9 +129,10 @@
       <form>
         <div class="form-group ">
           <div class="texto">
-            <label for="textDecryp">Insert text to Decrypt</label>
+            <label for="textDecryp">Insert the text to verify</label>
           </div>
-          <textarea class="form-control texto" id="textDecryp" rows="5" wrap></textarea>
+          <textarea class="form-control texto" id="textDecryp"  placeholder="Insert the text to verify" rows="5" wrap></textarea>
+          <button type="button" class="centrado btn btn-color-amarillo" onclick="verifyDocument();">Verify</button>
           <input type="file" id="fileDecrypt" name="file" />
         </div>
         
@@ -145,11 +146,6 @@
         <label for="textDecrypted">Result</label>
       </div>
       <textarea class="form-control texto" id="textDecrypted" rows="5" readonly></textarea>
-    <div class= "ancla">
-        <a href="#" id="downloadDecryptedFile" download class="centrado btn btn-color ancla" target=”_blank” style="color:black;">
-        <span>Download file</span></a>
-      </div>
-    
     </div>
     
 
